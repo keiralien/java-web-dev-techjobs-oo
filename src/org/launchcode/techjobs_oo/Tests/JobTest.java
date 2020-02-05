@@ -71,9 +71,6 @@ public class JobTest {
 
     @Test
     public void testToStringOnlyJobID() {
-//        System.out.println(job3.getId() + " " + job3.getEmployer());
-//        System.out.println(job3.getEmployer().isNotEmpty(job3.getEmployer().getValue()));
-//        System.out.println(job3.toString());
         assertTrue(job3.toString().contains("OOPS! This job does not seem to exist."));
     }
 
