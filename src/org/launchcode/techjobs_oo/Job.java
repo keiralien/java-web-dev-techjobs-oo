@@ -67,16 +67,20 @@ public class Job {
     public String toString() {
 
      String dataNot = "Data not available";
-        if(id != 0 && isAnyNotEmpty(name, employer.getValue(), location.getValue(), positionType.getValue(), coreCompetency.getValue())) {
+        if(id != 0 && isAnyNotEmpty(name,
+                employer == null ? null : employer.getValue(),
+                location == null ? null : location.getValue(),
+                positionType == null ? null : positionType.getValue(),
+                positionType == null ? null : coreCompetency.getValue())) {
             return String.format("\nID: %d\nName: %s\nEmployer: %s\nLocation: %s\nPosition Type: %s\nCore Competency: %s\n",
                     id,
                     defaultString(name, dataNot),
-                    defaultString(employer.getValue(), dataNot),
-                    defaultString(location.getValue(), dataNot),
-                    defaultString(positionType.getValue(), dataNot),
-                    defaultString(coreCompetency.getValue(), dataNot));
+                    employer == null ? dataNot : defaultString(employer.getValue(), dataNot),
+                    location == null ? dataNot : defaultString(location.getValue(), dataNot),
+                    positionType == null ? dataNot : defaultString(positionType.getValue(), dataNot),
+                    coreCompetency == null ? dataNot : defaultString(coreCompetency.getValue(), dataNot));
         } else {
-            return "OOPS! This job does not seem to exist";
+            return "OOPS! This job does not seem to exist.";
         }
     }
 

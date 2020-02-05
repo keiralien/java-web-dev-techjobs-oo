@@ -69,20 +69,20 @@ public class JobTest {
                 "Persistence\n"));
     }
 
-//    @Test
-//    public void testToStringOnlyJobID() {
+    @Test
+    public void testToStringOnlyJobID() {
 //        System.out.println(job3.getId() + " " + job3.getEmployer());
 //        System.out.println(job3.getEmployer().isNotEmpty(job3.getEmployer().getValue()));
 //        System.out.println(job3.toString());
-//        assertTrue(job3.toString().contains("OOPS! This job does not seem to exist."));
-//    }
+        assertTrue(job3.toString().contains("OOPS! This job does not seem to exist."));
+    }
 
     @Test
     public void testToStringWithSomeEmptyStrings() {
-        assertTrue(job4.toString().contains("ID: 4\nName: Web Developer\nEmployer: Data not available.\n" +
-                "Location: Kansas City\nPosition Type: Data not available.\nCore Competency: Data not available.\n"));
-        assertTrue(job5.toString().contains("ID: 5\nName: Data not available.\nEmployer: TestCorp\n" +
-                "Location: Data not available.\nPosition Type: Data\nCore Competency: SQL\n"));
+        assertTrue(job4.toString().contains("ID: 4\nName: Web Developer\nEmployer: Data not available\n" +
+                "Location: Kansas City\nPosition Type: Data not available\nCore Competency: Data not available\n"));
+        assertTrue(job5.toString().contains("ID: 5\nName: Data not available\nEmployer: TestCorp\n" +
+                "Location: Data not available\nPosition Type: Data\nCore Competency: SQL\n"));
     }
 
 
