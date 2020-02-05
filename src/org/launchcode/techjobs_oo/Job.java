@@ -28,6 +28,27 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+//Methods
+    public static void resetIdCounter() {
+        nextId = 1;
+    }
+
+    private boolean isNotEmpty(String stringIn) {
+        return stringIn != null && !stringIn.isEmpty();
+    }
+
+    private boolean isAnyNotEmpty(String ... stringInput) {
+        for(String s : stringInput) {
+            if(isNotEmpty(s))
+                return true;
+        }
+        return false;
+    }
+
+    private String defaultString(String stringIn, String defaultString) {
+        return isNotEmpty(stringIn) ? stringIn : defaultString;
+    }
+
     //Override Methods
     @Override
     public boolean equals(Object o) {
@@ -40,6 +61,23 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+
+     String dataNot = "Data not available";
+        if(id != 0 && isAnyNotEmpty(name, employer.getValue(), location.getValue(), positionType.getValue(), coreCompetency.getValue())) {
+            return String.format("\nID: %d\nName: %s\nEmployer: %s\nLocation: %s\nPosition Type: %s\nCore Competency: %s\n",
+                    id,
+                    defaultString(name, dataNot),
+                    defaultString(employer.getValue(), dataNot),
+                    defaultString(location.getValue(), dataNot),
+                    defaultString(positionType.getValue(), dataNot),
+                    defaultString(coreCompetency.getValue(), dataNot));
+        } else {
+            return "OOPS! This job does not seem to exist";
+        }
     }
 
     //Getters & Setters
@@ -86,4 +124,5 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
 }
